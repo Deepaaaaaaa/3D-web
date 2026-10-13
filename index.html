@@ -1,0 +1,1213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinkedIn Strategy. Content. Personal Branding.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #faf9f6;
+      --surface: #f4f3f0;
+      --surface-2: #efeeeb;
+      --white: #ffffff;
+      --dark: #2f312f;
+      --footer: #171717;
+      --ink: #1a1c1a;
+      --muted: #5f5e5e;
+      --lime: #c8f169;
+      --lime-soft: rgba(200, 241, 105, 0.2);
+      --lime-ink: #151f00;
+      --lime-text: #4d6700;
+      --on-dark: #efeeeb;
+      --on-dark-muted: #c8c6c5;
+      --shadow-card: 0 1px 2px rgba(0,0,0,0.05), 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.1);
+      --shadow-lift: 0 20px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+      --shadow-deep: 0 25px 50px -12px rgba(0,0,0,0.25);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, .display { font-family: 'Space Grotesk', system-ui, sans-serif; margin: 0; }
+    p { margin: 0; }
+    a { color: inherit; }
+    img, svg { display: block; max-width: 100%; }
+
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 64px; }
+    section { padding: 104px 0; }
+
+    .eyebrow {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 52px;
+      line-height: 58px;
+      letter-spacing: -1.3px;
+    }
+    .lead {
+      font-size: 20px;
+      line-height: 32px;
+      letter-spacing: -0.2px;
+      color: var(--muted);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 16px 40px;
+      border-radius: 12px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.26px;
+      text-decoration: none;
+      border: 0;
+      cursor: pointer;
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-lift); }
+    .btn-lime { background: var(--lime); color: var(--lime-ink); box-shadow: var(--shadow-card); }
+    .btn-white { background: var(--white); color: var(--ink); box-shadow: 0 1px 1px rgba(0,0,0,0.05); }
+    .btn-lg { font-size: 24px; letter-spacing: -0.36px; padding: 16px 40px; }
+
+    .link-arrow {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.26px;
+      text-decoration: none;
+      display: inline-flex;
+      gap: 4px;
+      align-items: center;
+    }
+    .link-arrow span { color: var(--lime); }
+
+    /* ============ HERO ============ */
+    .hero { padding-top: 104px; padding-bottom: 104px; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+      gap: 64px;
+      align-items: center;
+    }
+    .hero-left { display: flex; flex-direction: column; gap: 24px; }
+    .pill {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--white);
+      padding: 4px 16px;
+      border-radius: 12px;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--lime); flex-shrink: 0; }
+    .hero h1 {
+      font-weight: 700;
+      font-size: 72px;
+      line-height: 76px;
+      letter-spacing: -1.8px;
+    }
+    .hl {
+      background: var(--lime);
+      color: var(--lime-ink);
+      padding: 0 10px;
+      border-radius: 2px;
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+    }
+    .hero .supporting {
+      font-size: 20px;
+      line-height: 32px;
+      letter-spacing: -0.2px;
+      color: var(--muted);
+      max-width: 672px;
+    }
+    .hero .ctas { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; padding-top: 4px; }
+    .trust { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding-top: 8px; }
+    .trust span {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .trust i { font-style: normal; color: var(--lime); font-weight: 700; }
+
+    .hero-right { position: relative; height: 538px; }
+    .glow {
+      position: absolute;
+      width: 288px; height: 288px;
+      right: -40px; top: -40px;
+      background: rgba(200, 241, 105, 0.2);
+      filter: blur(32px);
+      border-radius: 12px;
+    }
+    .profile-card, .post-card {
+      position: absolute;
+      left: 0; right: 0;
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: var(--shadow-deep);
+    }
+    .profile-card { top: 24px; padding: 24px; display: flex; flex-direction: column; gap: 16px; }
+    .profile-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+    .profile-id { display: flex; gap: 16px; align-items: center; }
+    .avatar {
+      width: 56px; height: 56px; border-radius: 12px; background: #e9e8e5;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .profile-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.36px; display: flex; align-items: center; gap: 6px; }
+    .profile-sub { font-size: 14px; color: var(--muted); }
+    .badge-top {
+      background: var(--lime-soft);
+      color: #516d00;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1.32px;
+      padding: 4px 8px 4px 4px;
+      border-radius: 2px;
+      text-transform: uppercase;
+      line-height: 14px;
+      white-space: nowrap;
+    }
+    .metrics { background: var(--surface); border-radius: 4px; padding: 8px; display: flex; gap: 8px; }
+    .metric { flex: 1; display: flex; flex-direction: column; gap: 2px; padding: 4px; }
+    .metric .label { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 1.32px; text-transform: uppercase; color: var(--muted); }
+    .metric .value { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 24px; letter-spacing: -0.36px; }
+    .metric .value.lime { color: var(--lime-text); }
+    .metric .note { font-size: 12px; color: var(--muted); }
+
+    .post-card { top: 254px; padding: 24px; display: flex; flex-direction: column; gap: 16px; height: 268px; }
+    .post-top { display: flex; justify-content: space-between; align-items: center; }
+    .post-tag { display: flex; align-items: center; gap: 4px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 1.32px; text-transform: uppercase; color: var(--muted); }
+    .post-quote { font-size: 16px; line-height: 26px; font-weight: 500; letter-spacing: -0.08px; }
+    .spark { background: var(--surface); border-radius: 4px; padding: 16px 8px 8px; }
+    .spark-head { display: flex; justify-content: space-between; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 11px; letter-spacing: 1.32px; color: var(--muted); }
+    .spark-head b { color: var(--lime-text); font-weight: 700; }
+    .post-foot { display: flex; justify-content: space-between; font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 12px; color: var(--muted); }
+
+    .float {
+      position: absolute;
+      border-radius: 12px;
+      padding: 4px 16px;
+      font-size: 12px;
+      white-space: nowrap;
+      box-shadow: var(--shadow-deep);
+    }
+    .float-dm { top: 0; right: 0; background: #2f312f; color: #f2f1ee; font-family: 'Space Grotesk', sans-serif; font-weight: 500; }
+    .float-viewers { bottom: 4px; left: 16px; background: var(--lime); color: var(--lime-ink); font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.26px; }
+
+    /* ============ RESULTS ============ */
+    .results { background: var(--white); }
+    .stack-head { display: flex; flex-direction: column; gap: 8px; max-width: 768px; }
+    .stack-head .lead { margin-top: 0; }
+    .metric-cards {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 64px;
+    }
+    .metric-card {
+      background: var(--surface);
+      border-radius: 8px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.05);
+    }
+    .metric-card .big {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 44px;
+      line-height: 55px;
+    }
+    .metric-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 30px;
+      letter-spacing: -0.36px;
+      margin-top: 4px;
+    }
+    .metric-card .tag {
+      align-self: flex-start;
+      background: var(--white);
+      padding: 4px 8px;
+      border-radius: 2px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1.32px;
+      text-transform: uppercase;
+      line-height: 14px;
+    }
+
+    /* ============ SERVICES ============ */
+    .services { background: var(--bg); }
+    .services-head { display: flex; flex-direction: column; gap: 8px; max-width: 768px; }
+    .services-head .lead { margin-top: 16px; }
+    .bento {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 64px;
+      align-items: stretch;
+    }
+    .svc {
+      position: relative;
+      background: var(--white);
+      border-radius: 8px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      box-shadow: var(--shadow-card);
+    }
+    .svc.featured { box-shadow: var(--shadow-lift); gap: 16px; }
+    .svc-icon {
+      width: 48px; height: 48px; border-radius: 4px;
+      background: var(--surface-2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--lime-text);
+    }
+    .svc.featured .svc-icon { background: var(--lime-soft); }
+    .svc .tier {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1.32px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .svc h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 36px;
+      line-height: 42px;
+      letter-spacing: -0.72px;
+    }
+    .svc .desc { font-size: 16px; line-height: 26px; color: var(--muted); letter-spacing: -0.08px; }
+    .svc ul { list-style: none; padding: 8px 0 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+    .svc li { display: flex; gap: 8px; align-items: flex-start; font-size: 16px; line-height: 24px; }
+    .svc li svg { flex-shrink: 0; margin-top: 3px; color: var(--lime-text); }
+    .svc .svc-link { margin-top: auto; padding-top: 45px; }
+    .svc .svc-link a { color: var(--ink); }
+    .svc .svc-link span { color: var(--lime); }
+    .signature {
+      position: absolute;
+      top: 16px; right: 16px;
+      background: var(--lime);
+      color: var(--lime-ink);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1.32px;
+      text-transform: uppercase;
+      line-height: 14px;
+    }
+
+    /* ============ LEAD FORM ============ */
+    .lead-form { background: var(--bg); }
+    .lead-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: var(--shadow-deep);
+      background: var(--white);
+    }
+    .lead-left {
+      background: var(--dark);
+      color: var(--on-dark);
+      padding: 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 64px;
+    }
+    .lead-left .eyebrow { color: var(--lime); }
+    .lead-left h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 52px;
+      line-height: 58px;
+      letter-spacing: -1.3px;
+      color: #fff;
+      margin-top: 24px;
+    }
+    .lead-left .para { font-size: 16px; line-height: 26px; color: #e9e8e5; display: flex; flex-direction: column; gap: 26px; margin-top: 24px; }
+    .checks { list-style: none; padding: 8px 0 0; margin: 24px 0 0; display: flex; flex-direction: column; gap: 16px; }
+    .checks li { display: flex; gap: 8px; align-items: center; font-size: 16px; line-height: 24px; color: #e9e8e5; }
+    .checks .tick {
+      width: 24px; height: 24px; border-radius: 12px;
+      background: var(--lime-soft);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      color: var(--lime);
+    }
+    .lead-left .confidential { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 12px; line-height: 16px; color: var(--on-dark-muted); }
+
+    .lead-right { padding: 132px 64px; display: flex; flex-direction: column; justify-content: center; }
+    .lead-right h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 36px;
+      line-height: 42px;
+      letter-spacing: -0.72px;
+    }
+    .lead-right .sub { font-size: 14px; line-height: 22px; color: var(--muted); margin-top: 0; }
+    .lead-right .head { padding-bottom: 24px; }
+
+    .form { display: flex; flex-direction: column; gap: 16px; }
+    .field { display: flex; flex-direction: column; gap: 4px; }
+    .field label {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.26px;
+      color: var(--ink);
+    }
+    .field input {
+      width: 100%;
+      padding: 10px 16px;
+      border: 0;
+      border-radius: 2px;
+      background: var(--white);
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      color: var(--ink);
+      outline: none;
+      transition: box-shadow .15s ease;
+    }
+    .field input::placeholder { color: #9ca3af; }
+    .field input:focus { box-shadow: 0 0 0 2px var(--lime); }
+
+    .submit {
+      margin-top: 8px;
+      width: 100%;
+      background: var(--lime);
+      color: var(--lime-ink);
+      border: 0;
+      border-radius: 12px;
+      padding: 16px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      letter-spacing: -0.36px;
+      cursor: pointer;
+      box-shadow: var(--shadow-card);
+      transition: transform .15s ease, opacity .15s ease;
+    }
+    .submit:hover { transform: translateY(-1px); }
+    .submit:disabled { opacity: .6; cursor: wait; transform: none; }
+    .form-note { text-align: center; font-size: 12px; color: var(--muted); padding-top: 4px; }
+
+    .form-status { display: none; text-align: center; padding: 32px 16px; }
+    .form-status.show { display: block; }
+    .form-status h4 { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 28px; letter-spacing: -0.36px; margin: 0 0 8px; }
+    .form-status p { color: var(--muted); font-size: 16px; }
+    .form-status.error h4 { color: #b42318; }
+
+    /* ============ AUDIT OFFER ============ */
+    .audit { background: var(--dark); color: var(--on-dark); }
+    .audit-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+      gap: 64px;
+      align-items: center;
+    }
+    .audit-left { display: flex; flex-direction: column; gap: 24px; }
+    .audit-left .eyebrow-row { display: flex; align-items: center; gap: 4px; }
+    .audit-left .eyebrow-row .eyebrow { color: var(--lime); }
+    .audit-left h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 52px;
+      line-height: 58px;
+      letter-spacing: -1.3px;
+      color: #fff;
+    }
+    .audit-left .para { font-size: 20px; line-height: 32px; letter-spacing: -0.2px; color: var(--on-dark); display: flex; flex-direction: column; gap: 32px; }
+    .audit-chips { display: flex; gap: 8px; padding-top: 8px; flex-wrap: wrap; }
+    .chip {
+      flex: 1 1 0;
+      min-width: 120px;
+      background: rgba(239, 238, 235, 0.1);
+      padding: 8px;
+      border-radius: 2px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      display: flex; flex-direction: column; gap: 4px;
+      color: #fff;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+    }
+    .chip svg { color: var(--lime); }
+
+    .offer {
+      background: rgba(239, 238, 235, 0.1);
+      border-radius: 16px;
+      padding: 64px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      box-shadow: var(--shadow-deep);
+    }
+    .offer-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+    .offer-top .eyebrow { color: var(--on-dark); font-size: 11px; letter-spacing: .55px; }
+    .offer-pill {
+      background: var(--lime-soft);
+      color: var(--lime);
+      padding: 2px 8px;
+      border-radius: 12px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 500;
+      font-size: 12px;
+      white-space: nowrap;
+    }
+    .price { display: flex; align-items: center; gap: 16px; }
+    .price .amount {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 72px;
+      line-height: 72px;
+      letter-spacing: -2.88px;
+      color: var(--lime);
+    }
+    .price .note { font-size: 16px; line-height: 24px; color: var(--on-dark); }
+    .scope { list-style: none; padding: 8px 0; margin: 0; display: flex; flex-direction: column; gap: 16px; }
+    .scope li { display: flex; gap: 8px; align-items: flex-start; }
+    .scope li svg { flex-shrink: 0; margin-top: 3px; color: var(--lime); }
+    .scope strong {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      line-height: 24px;
+      color: #fff;
+    }
+    .scope span { display: block; font-size: 12px; line-height: 16px; color: var(--on-dark); }
+    .btn-audit {
+      width: 100%;
+      background: var(--lime);
+      color: var(--lime-ink);
+      padding: 16px;
+      border-radius: 12px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      letter-spacing: -0.36px;
+      text-align: center;
+      text-decoration: none;
+      box-shadow: var(--shadow-card);
+      transition: transform .15s ease;
+    }
+    .btn-audit:hover { transform: translateY(-1px); }
+    .offer-fine { text-align: center; font-size: 11px; line-height: 16.5px; color: var(--on-dark); }
+
+    /* ============ TESTIMONIALS ============ */
+    .testimonials { background: var(--bg); }
+    .testimonials .stack-head .lead { margin-top: 16px; }
+    .quotes {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 64px;
+    }
+    .quote {
+      background: var(--white);
+      border-radius: 8px;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 40px;
+      box-shadow: var(--shadow-card);
+    }
+    .quote .mark { font-family: 'Liberation Serif', Georgia, serif; font-size: 40px; line-height: 40px; color: var(--lime); }
+    .quote .text { font-size: 16px; line-height: 26px; letter-spacing: -0.08px; color: var(--ink); }
+    .quote .who { display: flex; flex-direction: column; gap: 4px; }
+    .quote .name { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: 0.26px; display: flex; gap: 4px; align-items: center; }
+    .quote .name svg { color: var(--lime-text); }
+    .quote .role { font-size: 12px; color: var(--muted); }
+    .quote .placeholder { font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 10px; letter-spacing: .5px; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+
+    /* ============ FAQ ============ */
+    .faq { background: var(--surface); padding-left: 140px; padding-right: 140px; }
+    .faq-head { display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+    .faq-head h2 { margin-top: 3px; }
+    .faq-head .lead { font-size: 16px; line-height: 26px; letter-spacing: -0.08px; margin-top: 0; }
+    .faq-list { display: flex; flex-direction: column; gap: 8px; margin: 64px auto 0; max-width: 872px; }
+    .faq-item {
+      background: var(--white);
+      border-radius: 8px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      overflow: hidden;
+    }
+    .faq-item summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+      line-height: 30px;
+      letter-spacing: -0.36px;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary svg { flex-shrink: 0; transition: transform .2s ease; color: var(--ink); }
+    .faq-item[open] summary svg { transform: rotate(180deg); }
+    .faq-item .answer { padding: 0 24px 24px; font-size: 16px; line-height: 24px; color: var(--muted); }
+
+    /* ============ FINAL CTA ============ */
+    .final { background: var(--dark); color: var(--on-dark); text-align: center; }
+    .final-inner { display: flex; flex-direction: column; align-items: center; gap: 24px; }
+    .final .bar { width: 64px; height: 4px; border-radius: 12px; background: var(--lime); }
+    .final h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 72px;
+      line-height: 76px;
+      letter-spacing: -1.8px;
+      color: #fff;
+      max-width: 896px;
+    }
+    .final .lead { color: var(--on-dark); font-size: 20px; line-height: 32px; letter-spacing: -0.2px; max-width: 672px; }
+    .final .cta-wrap { padding-top: 16px; }
+    .final .btn { font-size: 24px; letter-spacing: -0.36px; padding: 16px 40px; }
+    .final .contact-link { font-size: 12px; color: var(--on-dark); text-decoration: underline; text-decoration-color: var(--lime); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+
+    /* ============ FOOTER ============ */
+    footer { background: var(--footer); color: var(--on-dark); padding: 65px 0 64px; border-top: 1px solid rgba(233,232,229,0.1); }
+    .foot-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 5fr) minmax(0, 3fr) minmax(0, 4fr);
+      gap: 40px;
+      padding-bottom: 40px;
+    }
+    .foot-brand { display: flex; flex-direction: column; gap: 8px; }
+    .foot-brand .name {
+      display: flex; align-items: center; gap: 4px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 24px;
+      letter-spacing: -0.6px;
+      text-transform: uppercase;
+      color: #fff;
+    }
+    .foot-brand .tagline { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 13px; letter-spacing: .26px; color: var(--lime); }
+    .foot-brand .blurb { max-width: 384px; font-size: 16px; line-height: 24px; color: var(--on-dark-muted); padding-top: 4px; }
+    .foot-col h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      color: var(--on-dark-muted);
+      margin: 0 0 8px;
+    }
+    .foot-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 4px; }
+    .foot-col a { color: var(--on-dark); text-decoration: none; font-size: 16px; line-height: 24px; }
+    .foot-col a:hover { color: var(--lime); }
+    .foot-col .contact { font-size: 16px; line-height: 24px; color: var(--on-dark); }
+    .foot-col .contact b { color: #fff; font-weight: 400; }
+    .foot-col .book { color: var(--lime); font-family: 'Space Grotesk', sans-serif; font-weight: 500; font-size: 16px; text-decoration: none; display: inline-block; padding-top: 4px; }
+    .foot-bottom {
+      border-top: 1px solid rgba(233,232,229,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      padding-top: 25px;
+      flex-wrap: wrap;
+    }
+    .foot-bottom p, .foot-bottom a { font-size: 12px; line-height: 16px; color: var(--on-dark-muted); text-decoration: none; }
+    .foot-bottom .legal { display: flex; gap: 24px; }
+    .foot-bottom a:hover { color: var(--lime); }
+
+    /* ============ RESPONSIVE ============ */
+    @media (max-width: 1100px) {
+      .container { padding: 0 40px; }
+      .hero h1 { font-size: 60px; line-height: 66px; }
+      .h2, .lead-left h2, .audit-left h2 { font-size: 44px; line-height: 50px; }
+      .final h2 { font-size: 56px; line-height: 62px; }
+      .metric-cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .bento { grid-template-columns: 1fr; }
+      .quotes { grid-template-columns: 1fr; }
+      .faq { padding-left: 40px; padding-right: 40px; }
+    }
+
+    @media (max-width: 960px) {
+      section { padding: 72px 0; }
+      .hero { padding-top: 56px; padding-bottom: 72px; }
+      .hero-grid, .audit-grid { grid-template-columns: 1fr; gap: 48px; }
+      .hero-right { height: 560px; max-width: 520px; width: 100%; margin: 0 auto; }
+      .lead-shell { grid-template-columns: 1fr; }
+      .lead-left { padding: 40px 32px; gap: 40px; }
+      .lead-right { padding: 40px 32px; }
+      .lead-left h2 { margin-top: 16px; }
+      .foot-grid { grid-template-columns: 1fr 1fr; }
+      .foot-brand { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 640px) {
+      .container { padding: 0 20px; }
+      .hero h1 { font-size: 44px; line-height: 50px; letter-spacing: -1px; }
+      .h2, .lead-left h2, .audit-left h2, .final h2 { font-size: 36px; line-height: 42px; letter-spacing: -0.8px; }
+      .lead, .hero .supporting, .final .lead, .audit-left .para { font-size: 17px; line-height: 27px; }
+      .metric-cards { grid-template-columns: 1fr; }
+      .metric-card { padding: 28px; }
+      .svc { padding: 28px; }
+      .svc h3 { font-size: 30px; line-height: 36px; }
+      .offer { padding: 32px 24px; }
+      .price .amount { font-size: 56px; line-height: 56px; }
+      .btn, .btn-lg { width: 100%; padding: 16px 24px; font-size: 16px; }
+      .final .btn { font-size: 18px; }
+      .hero-right { height: auto; display: flex; flex-direction: column; gap: 16px; }
+      .glow { display: none; }
+      .profile-card, .post-card, .float { position: static; height: auto; }
+      .float-dm, .float-viewers { display: none; }
+      .lead-right h3 { font-size: 28px; line-height: 34px; }
+      .form-status h4 { font-size: 24px; }
+      .faq { padding-left: 20px; padding-right: 20px; }
+      .faq-item summary { font-size: 18px; line-height: 26px; padding: 18px; }
+      .faq-item .answer { padding: 0 18px 18px; }
+      .foot-grid { grid-template-columns: 1fr; }
+      .metric-cards, .quotes { margin-top: 40px; }
+      .bento, .faq-list { margin-top: 40px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============ SECTION 1: HERO ============ -->
+  <section class="hero" id="top">
+    <div class="container hero-grid">
+      <div class="hero-left">
+        <div class="pill">
+          <span class="dot"></span>
+          <span class="eyebrow" style="color: var(--ink);">LinkedIn personal branding, done right.</span>
+        </div>
+
+        <h1>From Invisible to <span class="hl">In-Demand</span> on LinkedIn.</h1>
+
+        <p class="supporting">
+          You have the expertise. Let’s make sure the right people know about it.
+          We help you build a powerful LinkedIn presence through strategic content,
+          compelling storytelling, and hands-on management — so you can focus on
+          what you do best while your personal brand does the talking.
+        </p>
+
+        <div class="ctas">
+          <a class="btn btn-lime" href="#lead-form">Let’s Grow Your LinkedIn ↗</a>
+          <a class="btn btn-white" href="#services">Explore Our Services</a>
+        </div>
+
+        <div class="trust">
+          <span>Strategy</span><i>•</i>
+          <span>Content</span><i>•</i>
+          <span>Consistency</span><i>•</i>
+          <span>Growth</span>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="glow"></div>
+
+        <div class="float float-dm">Inbound DM: “Let’s discuss an advisory partnership”</div>
+
+        <div class="profile-card">
+          <div class="profile-head">
+            <div class="profile-id">
+              <div class="avatar">
+                <svg width="19" height="23" viewBox="0 0 19 23" fill="none" stroke="#2f312f" stroke-width="1.6" stroke-linejoin="round"><path d="M9.5 1.5 L17 4.5 V10.5 C17 15.5 13.8 19.5 9.5 21.5 C5.2 19.5 2 15.5 2 10.5 V4.5 Z"/><path d="M6.5 11 L8.5 13 L12.5 9"/></svg>
+              </div>
+              <div>
+                <div class="profile-name">Executive Authority
+                  <svg width="18" height="18" viewBox="0 0 18 18"><circle cx="9" cy="9" r="8" fill="#c8f169"/><path d="M5.5 9.2 L8 11.5 L12.5 6.8" fill="none" stroke="#151f00" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <div class="profile-sub">Founder &amp; Strategic Advisor | Helping B2B Tech scale</div>
+              </div>
+            </div>
+            <div class="badge-top">98/100 Top<br />Voice</div>
+          </div>
+          <div class="metrics">
+            <div class="metric">
+              <span class="label">Audience Surge</span>
+              <span class="value lime">+14.2k</span>
+              <span class="note">this quarter</span>
+            </div>
+            <div class="metric">
+              <span class="label">Search Rank</span>
+              <span class="value">Top 1%</span>
+              <span class="note">industry benchmark</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="post-card">
+          <div class="post-top">
+            <span class="post-tag"><span class="dot"></span>Featured Authority Thread</span>
+            <span class="post-foot" style="font-weight:500;">2h • •••</span>
+          </div>
+          <p class="post-quote">“Most founders wait until their next round to build an audience. Elite founders build the audience first, turning distribution into their ultimate leverage.”</p>
+          <div class="spark">
+            <div class="spark-head"><span>Engagement Velocity</span><b>+340% Viewers</b></div>
+            <svg viewBox="0 0 392 48" preserveAspectRatio="none" width="100%" height="48" style="margin-top:6px;">
+              <path d="M4 40 C 60 38, 90 34, 130 30 S 190 26, 230 24 S 320 20, 388 6" fill="none" stroke="#4d6700" stroke-width="2" stroke-linecap="round"/>
+              <path d="M4 40 C 60 38, 90 34, 130 30 S 190 26, 230 24 S 320 20, 388 6 L388 48 L4 48 Z" fill="rgba(200,241,105,0.25)"/>
+            </svg>
+          </div>
+          <div class="post-foot">
+            <span>👍 1.4k likes</span>
+            <span>328 comments • 94 reposts</span>
+          </div>
+        </div>
+
+        <div class="float float-viewers">↗ Profile Viewers: +340% inbound trajectory</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 2: RESULTS ============ -->
+  <section class="results" id="results">
+    <div class="container">
+      <div class="stack-head">
+        <h2 class="h2">Good Content Gets Attention. The Right Strategy Creates Opportunities.</h2>
+        <p class="lead">Growing on LinkedIn isn’t just about posting every day. It’s about showing up with purpose, sharing ideas that matter, and building trust with the people you want to reach.</p>
+      </div>
+
+      <div class="metric-cards">
+        <div class="metric-card">
+          <div>
+            <div class="big">[X]+</div>
+            <h3>Personal Brands Built</h3>
+          </div>
+          <span class="tag">Strategy before posting</span>
+        </div>
+        <div class="metric-card">
+          <div>
+            <div class="big">[X]M+</div>
+            <h3>Impressions Generated</h3>
+          </div>
+          <span class="tag">Content that sounds like you</span>
+        </div>
+        <div class="metric-card">
+          <div>
+            <div class="big">[X]+</div>
+            <h3>Content Pieces Published</h3>
+          </div>
+          <span class="tag">Consistent brand visibility</span>
+        </div>
+        <div class="metric-card">
+          <div>
+            <div class="big">[X]+</div>
+            <h3>Qualified Leads Generated</h3>
+          </div>
+          <span class="tag">Growth with purpose</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 3: SERVICES ============ -->
+  <section class="services" id="services">
+    <div class="container">
+      <div class="services-head">
+        <span class="eyebrow">What we do</span>
+        <h2 class="h2">Your Expertise. Our Strategy. A Stronger LinkedIn Presence.</h2>
+        <p class="lead">Building a personal brand takes more than showing up online. It takes the right positioning, a clear content strategy, and consistent execution. We bring it all together.</p>
+      </div>
+
+      <div class="bento">
+        <div class="svc">
+          <div class="svc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5 L13.5 13.5 L8.5 15.5 L10.5 10.5 Z"/></svg>
+          </div>
+          <span class="tier">Tier 01 • Architecture</span>
+          <h3>Know What to Say. And Who to Say It To.</h3>
+          <p class="desc">We build a clear LinkedIn growth strategy around your expertise, audience, business goals, and personal brand. Every post has a purpose, every topic has a direction, and your content starts working toward something bigger.</p>
+          <ul>
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="7"/><path d="M5 8.2 L7 10 L11 6.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Personal brand positioning</li>
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="7"/><path d="M5 8.2 L7 10 L11 6.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Audience and niche research</li>
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="7"/><path d="M5 8.2 L7 10 L11 6.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Content pillars and monthly planning</li>
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="7"/><path d="M5 8.2 L7 10 L11 6.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Growth strategy and performance reviews</li>
+          </ul>
+          <div class="svc-link"><a class="link-arrow" href="#lead-form">Build My Strategy <span>↗</span></a></div>
+        </div>
+
+        <div class="svc featured">
+          <span class="signature">Signature Service</span>
+          <div class="svc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20 L8 16"/><path d="M14 4 L20 10 L10 20 L4 20 L4 14 Z"/><path d="M12 6 L18 12"/></svg>
+          </div>
+          <span class="tier">Tier 02 • Editorial</span>
+          <h3>Content That Sounds Like You.</h3>
+          <p class="desc">Your best ideas shouldn’t stay in your head. We turn your knowledge, experiences, and opinions into engaging LinkedIn posts that communicate your expertise without losing your personality.</p>
+          <ul>
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="7"/><path d="M5 8.2 L7 10 L11 6.2" stroke-linecap="round" stroke-linejoin="round"/></svg>LinkedIn post writing</li>
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="7"/><path d="M5 8.2 L7 10 L11 6.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Strong hooks and storytelling</li>
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="7"/><path d="M5 8.2 L7 10 L11 6.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Educational and thought-leadership content</li>
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="7"/><path d="M5 8.2 L7 10 L11 6.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Brand voice consistency</li>
+          </ul>
+          <div class="svc-link"><a class="link-arrow" href="#lead-form">Make My Ideas Count <span>↗</span></a></div>
+        </div>
+
+        <div class="svc">
+          <div class="svc-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M4 10 H20 M9 3 V7 M15 3 V7"/></svg>
+          </div>
+          <span class="tier">Tier 03 • Operations</span>
+          <h3>You Focus on Your Business. We’ll Handle the Content.</h3>
+          <p class="desc">Stay consistent without spending hours planning, writing, and organizing posts. We help manage your content workflow so your personal brand keeps showing up while you focus on your work.</p>
+          <ul>
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="7"/><path d="M5 8.2 L7 10 L11 6.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Content calendar management</li>
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="7"/><path d="M5 8.2 L7 10 L11 6.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Post scheduling and publishing support</li>
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="7"/><path d="M5 8.2 L7 10 L11 6.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Content workflow coordination</li>
+            <li><svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="7"/><path d="M5 8.2 L7 10 L11 6.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Performance tracking and optimization</li>
+          </ul>
+          <div class="svc-link"><a class="link-arrow" href="#lead-form">Make LinkedIn Easier <span>↗</span></a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 4: LEAD FORM ============ -->
+  <section class="lead-form" id="lead-form">
+    <div class="container">
+      <div class="lead-shell">
+        <div class="lead-left">
+          <div>
+            <span class="eyebrow">Let’s talk about your growth</span>
+            <h2>Your Next LinkedIn Chapter Starts Here.</h2>
+            <div class="para">
+              <p>You’re great at what you do. Let’s make your LinkedIn profile reflect that.</p>
+              <p>Tell us about yourself, your goals, and where you want to take your personal brand. We’ll explore how we can help you get there.</p>
+            </div>
+            <ul class="checks">
+              <li><span class="tick"><svg width="11" height="8" viewBox="0 0 11 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4 L4 7 L10 1"/></svg></span>A clearer personal brand direction</li>
+              <li><span class="tick"><svg width="11" height="8" viewBox="0 0 11 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4 L4 7 L10 1"/></svg></span>A strategy aligned with your goals</li>
+              <li><span class="tick"><svg width="11" height="8" viewBox="0 0 11 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4 L4 7 L10 1"/></svg></span>A practical next step for your LinkedIn presence</li>
+            </ul>
+          </div>
+          <p class="confidential">Strict confidentiality guaranteed. We operate as your stealth advisory team.</p>
+        </div>
+
+        <div class="lead-right">
+          <div class="head">
+            <h3>Tell Us About Yourself</h3>
+            <p class="sub">A few details will help us understand what you need.</p>
+          </div>
+
+          <form class="form" id="leadForm" novalidate>
+            <div class="field">
+              <label for="name">Full Name *</label>
+              <input id="name" name="name" type="text" placeholder="Your name" autocomplete="name" required />
+            </div>
+            <div class="field">
+              <label for="email">Work Email *</label>
+              <input id="email" name="email" type="email" placeholder="you@company.com" autocomplete="email" required />
+            </div>
+            <div class="field">
+              <label for="phone">Phone Number *</label>
+              <input id="phone" name="phone" type="tel" placeholder="+91 98765 43210" autocomplete="tel" required />
+            </div>
+
+            <button class="submit" type="submit" id="submitBtn">Let’s Build Your Brand ↗</button>
+            <p class="form-note">Your details will only be used to follow up about your LinkedIn growth goals.</p>
+          </form>
+
+          <div class="form-status" id="formStatus" role="status" aria-live="polite">
+            <h4 id="statusTitle"></h4>
+            <p id="statusText"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 5: ₹1 AUDIT OFFER ============ -->
+  <section class="audit" id="audit-offer">
+    <div class="container audit-grid">
+      <div class="audit-left">
+        <div class="eyebrow-row"><span class="dot"></span><span class="eyebrow">Your first step</span></div>
+        <h2>Your LinkedIn Profile Could Be Working Harder. Let’s Find Out.</h2>
+        <div class="para">
+          <p>Sometimes, a few strategic changes can make your profile and content much clearer. But first, you need to know what’s working, what’s missing, and what deserves your attention.</p>
+          <p>Book a LinkedIn audit session to get an outside perspective on your profile, content, and growth strategy.</p>
+        </div>
+        <div class="audit-chips">
+          <div class="chip">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M7 10 H13"/></svg>
+            Headline Clarity
+          </div>
+          <div class="chip">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 15 L9 10 L14 14 L17 11 L21 15"/></svg>
+            Banner Impact
+          </div>
+          <div class="chip">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 L14.9 9 L21.5 9.8 L16.7 14.3 L18 20.8 L12 17.5 L6 20.8 L7.3 14.3 L2.5 9.8 L9.1 9 Z"/></svg>
+            Featured Section
+          </div>
+          <div class="chip">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7 V12 L15 14"/></svg>
+            Content Cadence
+          </div>
+        </div>
+      </div>
+
+      <div class="offer">
+        <div class="offer-top">
+          <span class="eyebrow">Special LinkedIn Audit Session</span>
+          <span class="offer-pill">Limited Cohort</span>
+        </div>
+        <div class="price">
+          <span class="amount">₹1</span>
+          <span class="note">A small price for a fresh<br />perspective.</span>
+        </div>
+        <ul class="scope">
+          <li>
+            <svg width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="7"/><path d="M5 8.2 L7 10 L11 6.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><strong>Profile Positioning</strong><span>Understand whether your profile communicates who you help, what you do, and why it matters.</span></div>
+          </li>
+          <li>
+            <svg width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="7"/><path d="M5 8.2 L7 10 L11 6.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><strong>Content Strategy</strong><span>Identify whether your content supports your expertise, audience, and professional goals.</span></div>
+          </li>
+          <li>
+            <svg width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="7"/><path d="M5 8.2 L7 10 L11 6.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><strong>Growth Opportunities</strong><span>Discover practical ways to improve consistency, visibility, and engagement.</span></div>
+          </li>
+          <li>
+            <svg width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="7"/><path d="M5 8.2 L7 10 L11 6.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <div><strong>Actionable Next Steps</strong><span>Leave with a clearer understanding of what to improve first.</span></div>
+          </li>
+        </ul>
+
+        <a class="btn-audit" href="https://payments.cashfree.com/forms/getaudit" target="_blank" rel="noopener noreferrer">Book Your ₹1 Audit ↗</a>
+
+        <p class="offer-fine">Session duration, deliverables, eligibility, and payment terms will be shared before booking.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 6: TESTIMONIALS ============ -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <div class="stack-head">
+        <span class="eyebrow">Kind words, real experiences</span>
+        <h2 class="h2">Don’t Just Take Our Word for It.</h2>
+        <p class="lead">The best part of building a personal brand isn’t just watching the numbers grow. It’s seeing people find their voice, gain confidence, and create opportunities they didn’t have before.</p>
+      </div>
+
+      <div class="quotes">
+        <div class="quote">
+          <div class="mark">“</div>
+          <p class="text">“I always knew LinkedIn was important, but I never knew what to post or how to position myself. Having a clear strategy has made the entire process so much easier.”</p>
+          <div class="who">
+            <span class="name">[Client Name] <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="7"/><path d="M5 8.2 L7 10 L11 6.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="role">Founder / Business Owner</span>
+            <span class="placeholder">Sample client review placeholder</span>
+          </div>
+        </div>
+        <div class="quote">
+          <div class="mark">“</div>
+          <p class="text">“The content finally sounds like me. I don’t have to spend hours figuring out what to write, and I feel much more confident showing up on LinkedIn.”</p>
+          <div class="who">
+            <span class="name">[Client Name] <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="7"/><path d="M5 8.2 L7 10 L11 6.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="role">Consultant / Professional</span>
+            <span class="placeholder">Sample client review placeholder</span>
+          </div>
+        </div>
+        <div class="quote">
+          <div class="mark">“</div>
+          <p class="text">“What I appreciated most was the clarity. We now have a direction, a content plan, and a consistent way to communicate what makes our business different.”</p>
+          <div class="who">
+            <span class="name">[Client Name] <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4"><circle cx="8" cy="8" r="7"/><path d="M5 8.2 L7 10 L11 6.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span class="role">Entrepreneur</span>
+            <span class="placeholder">Sample client review placeholder</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 7: FAQ ============ -->
+  <section class="faq" id="faqs">
+    <div class="faq-head">
+      <span class="eyebrow">Transparency • Operations</span>
+      <h2 class="h2">Frequently Asked Questions</h2>
+      <p class="lead">Everything you need to know about our strategy sessions, content workflow, and executive partnership models.</p>
+    </div>
+
+    <div class="faq-list">
+      <details class="faq-item" open>
+        <summary>1. Who are your LinkedIn services for? <svg width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1.5 L6 6.5 L11 1.5"/></svg></summary>
+        <div class="answer">Our services are built for founders, executives, business owners, consultants, coaches, and ambitious professionals who want to turn their real-world experience into an active personal brand that attracts opportunities, partnerships, and high-value clients.</div>
+      </details>
+      <details class="faq-item">
+        <summary>2. Can you help me grow from zero followers? <svg width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1.5 L6 6.5 L11 1.5"/></svg></summary>
+        <div class="answer">[Answer to be added]</div>
+      </details>
+      <details class="faq-item">
+        <summary>3. What services do you provide? <svg width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1.5 L6 6.5 L11 1.5"/></svg></summary>
+        <div class="answer">[Answer to be added]</div>
+      </details>
+      <details class="faq-item">
+        <summary>4. Do I need to write my own LinkedIn posts? <svg width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1.5 L6 6.5 L11 1.5"/></svg></summary>
+        <div class="answer">[Answer to be added]</div>
+      </details>
+      <details class="faq-item">
+        <summary>5. How soon will I see results? <svg width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1.5 L6 6.5 L11 1.5"/></svg></summary>
+        <div class="answer">[Answer to be added]</div>
+      </details>
+      <details class="faq-item">
+        <summary>6. What happens during the ₹1 LinkedIn audit? <svg width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1.5 L6 6.5 L11 1.5"/></svg></summary>
+        <div class="answer">[Answer to be added]</div>
+      </details>
+      <details class="faq-item">
+        <summary>7. Will the content sound like me? <svg width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1.5 L6 6.5 L11 1.5"/></svg></summary>
+        <div class="answer">[Answer to be added]</div>
+      </details>
+      <details class="faq-item">
+        <summary>8. How do I get started? <svg width="12" height="8" viewBox="0 0 12 8" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M1 1.5 L6 6.5 L11 1.5"/></svg></summary>
+        <div class="answer">[Answer to be added]</div>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 8: FINAL CTA ============ -->
+  <section class="final">
+    <div class="container final-inner">
+      <div class="bar"></div>
+      <h2>Let’s Make You Impossible to Ignore.</h2>
+      <p class="lead">Your ideas deserve to be heard. Your expertise deserves to be seen.<br />Let’s build a LinkedIn presence that reflects the value you bring.</p>
+      <div class="cta-wrap">
+        <a class="btn btn-lime" href="#lead-form">Start Your LinkedIn Growth Journey ↗</a>
+      </div>
+      <a class="contact-link" href="#lead-form">Have a question? Get in touch.</a>
+    </div>
+  </section>
+
+  <!-- ============ SECTION 9: FOOTER ============ -->
+  <footer>
+    <div class="container">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <div class="name">[Your Brand Name] <span class="dot"></span></div>
+          <div class="tagline">LinkedIn Strategy. Content. Personal Branding.</div>
+          <p class="blurb">Helping ambitious professionals turn their expertise into a personal brand people remember.</p>
+        </div>
+
+        <div class="foot-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#top">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#testimonials">Testimonials</a></li>
+            <li><a href="#faqs">FAQs</a></li>
+          </ul>
+        </div>
+
+        <div class="foot-col">
+          <h4>Connect &amp; Book</h4>
+          <p class="contact"><b>Email:</b> [YOUR EMAIL]</p>
+          <p class="contact"><b>LinkedIn:</b> [YOUR LINKEDIN URL]</p>
+          <a class="book" href="https://payments.cashfree.com/forms/getaudit" target="_blank" rel="noopener noreferrer">Book an Audit ↗</a>
+        </div>
+      </div>
+
+      <div class="foot-bottom">
+        <p>© 2026 [Your Brand Name]. All rights reserved.</p>
+        <div class="legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Google Apps Script web app URL (deployed Code.gs)
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyJpFAIhzdtamU6eLM-S5E7bRBkmviPOWxGbsF7aVwZ4WTKSKRxnxpdimP11sFtzjFd/exec";
+
+    const form = document.getElementById("leadForm");
+    const submitBtn = document.getElementById("submitBtn");
+    const statusBox = document.getElementById("formStatus");
+    const statusTitle = document.getElementById("statusTitle");
+    const statusText = document.getElementById("statusText");
+
+    function showSuccess() {
+      form.style.display = "none";
+      statusBox.classList.remove("error");
+      statusBox.classList.add("show");
+      statusTitle.textContent = "Thank you!";
+      statusText.textContent = "We’ve received your details and will be in touch soon.";
+    }
+
+    function showError() {
+      statusBox.classList.add("show", "error");
+      statusTitle.textContent = "Something went wrong";
+      statusText.textContent = "Please check your connection and try again.";
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Let’s Build Your Brand ↗";
+    }
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+
+      if (!name || !email || !phone) {
+        showError();
+        statusTitle.textContent = "Please fill in all fields";
+        statusText.textContent = "Name, email, and phone are required.";
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Sending...";
+
+      const url = SCRIPT_URL + "?" + new URLSearchParams({ name, email, phone });
+
+      fetch(url, { method: "GET", mode: "no-cors" })
+        .then(() => showSuccess())
+        .catch(() => showError());
+    });
+  </script>
+</body>
+</html>
